@@ -22,29 +22,3 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
-
-Toda app Nest precisa de um module injetavel para ser o entryPoint. (mains.ts)
-Modules são formas de agrupar componentes
-Modulo Sao Singletons
-decorator @Module
-
-Ex:
-
-@Module({
-  imports: [],
-  controllers: [],
-  providers: [],
-})
-
-
-#Controllers
-
-decorator @Controller('path')
-
-responsavel por receber a requisição, processar e retornar um response para o hadlers.
-
-@GET
-@POST
-@DELETE
-@PATCH
