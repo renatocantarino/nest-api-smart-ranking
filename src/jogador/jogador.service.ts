@@ -10,7 +10,14 @@ export class JogadorService {
     private readonly logger = new Logger(JogadorService.name);
     async Create(player: CreateDTO): Promise<void> {
         this.logger.warn(player)
+        const { email } = player;
 
+        const jogador = await this.jogadores.find(jg => jg.email === email);
+        jogador ? this.Edit(jogador, player) : this.criar(player)
+    }
+
+
+    async criar(player: CreateDTO) {
         const { email, fullname, phone } = player;
         const _player: Jogador = {
             _id: uuidv4(),
@@ -23,7 +30,22 @@ export class JogadorService {
         await this.jogadores.push(_player);
     }
 
+    async Edit(jogador: Jogador, player: CreateDTO): Promise<void> {
+        const { fullname } = player;
+
+        jogador.fullname = fullname;
+    }
+
+
+
+
     async GetAll(): Promise<Jogador[]> {
+        this.logger.warn("GET")
+
+        return await this.jogadores;
+    }
+
+    async GetbyEmail(): Promise<Jogador[]> {
         this.logger.warn("GET")
 
         return await this.jogadores;
